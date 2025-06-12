@@ -1,5 +1,5 @@
 {
-  "name": "[project-name]",
+  "name": "todo-list-TOP",
   "version": "1.0.0",
   "description": "TOP project.",
   "main": "index.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Froods/[project-name].git"
+    "url": "git+https://github.com/Froods/todo-list-TOP.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Froods/[project-name]/issues"
+    "url": "https://github.com/Froods/todo-list-TOP/issues"
   },
-  "homepage": "https://github.com/Froods/[project-name]#readme",
+  "homepage": "https://github.com/Froods/todo-list-TOP#readme",
   "devDependencies": {
     "css-loader": "^7.1.2",
     "html-loader": "^5.1.0",

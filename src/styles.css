@@ -1,3 +1,14 @@
 body {
-    background-color: pink;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 4fr;
+}
+
+.list-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-button {
+    text-align: left;
 }
