@@ -1,4 +1,4 @@
-import { Task } from "./taskManager.js"
+import { Task, addTask, tasks } from "./taskManager.js"
 import { loadLists, addList, renderOptions, lists, List } from "./listManager.js"
 
 // Layout elements
@@ -244,9 +244,8 @@ function showTaskPopup() {
         const chosenList = listSelect.value;     
 
         if (title && description && dueDate && priority) {
-            const task = new Task(title, description, new Date(dueDate), priority, chosenList);
-            //addTask(task);
-            console.log(task);
+            addTask(title, description, new Date(dueDate), priority, chosenList);
+            console.log(tasks);
             popup.close();
         }
         

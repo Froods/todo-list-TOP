@@ -1,3 +1,5 @@
+const tasks = [];
+
 class Task {
     constructor(title, description, dueDate, priority, list) {
         this.title = title;
@@ -19,4 +21,9 @@ class Task {
     }
 }
 
-export { Task };
+function addTask(title, des, dueDate, priority, list) {
+    const newTask = new Task(title, des, dueDate, priority, list);
+    tasks.push(newTask);
+}
+
+export { Task, addTask, tasks };

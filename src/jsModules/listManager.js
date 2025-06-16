@@ -15,8 +15,9 @@ class List {
 
 const listInbox = new List("Inbox", true);
 const listToday = new List("Today", true);
+const listFinished = new List("Finished", true);
 
-const lists = [listInbox, listToday];
+const lists = [listInbox, listToday, listFinished];
 
 // Add list
 function addList(list, nav) {
