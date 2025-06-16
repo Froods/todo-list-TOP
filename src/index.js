@@ -1,5 +1,5 @@
 import "./styles.css";
-import { Task } from "./jsModules/classes.js"
+import { Task } from "./jsModules/taskManager.js"
 import { populateBody } from "./jsModules/draw.js"
 import { List, addList } from "./jsModules/listManager.js"
 

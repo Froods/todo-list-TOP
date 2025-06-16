@@ -1,5 +1,5 @@
-import { Task } from "./classes.js"
-import { loadLists, addList, lists, List } from "./listManager.js"
+import { Task } from "./taskManager.js"
+import { loadLists, addList, renderOptions, lists, List } from "./listManager.js"
 
 // Layout elements
 const listContainer = document.createElement("div");
@@ -208,7 +208,27 @@ function showTaskPopup() {
     form.appendChild(prioritySelect);
 
     // List label and input
-    // START HER
+    const listLabel = document.createElement("label");
+    listLabel.setAttribute("for", "list")
+    listLabel.textContent = "Select list";
+    form.appendChild(listLabel);
+
+    const listSelect = document.createElement("select");
+    listSelect.setAttribute("id", "list");
+    listSelect.setAttribute("name", "list");
+
+        // listSelect options
+        // Default
+        const listDefault = document.createElement("option");
+        listDefault.setAttribute("value", "default");
+        listDefault.innerHTML = "Select a list for this task";
+        listSelect.appendChild(listDefault);
+        // Render options
+        renderOptions(listSelect);
+
+    
+    form.appendChild(listSelect);
+
 
     // Add button
     const addBtn = document.createElement("button");
@@ -220,10 +240,11 @@ function showTaskPopup() {
         const title = titleInput.value;
         const description = descriptionArea.value;
         const dueDate = datepicker.value;
-        const priority = prioritySelect.value;        
+        const priority = prioritySelect.value;
+        const chosenList = listSelect.value;     
 
         if (title && description && dueDate && priority) {
-            const task = new Task(title, description, new Date(dueDate), priority);
+            const task = new Task(title, description, new Date(dueDate), priority, chosenList);
             //addTask(task);
             console.log(task);
             popup.close();

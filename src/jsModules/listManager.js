@@ -5,6 +5,7 @@ class List {
         this.element.textContent = this.title;
         this.class = this.title.replace(/ /g, "-");
         this.element.classList.add(`${this.class}`, "list-button");
+        this.special = special;
         if (special) {
             this.element.classList.add("special");
         }
@@ -42,4 +43,16 @@ function clearLists(nav) {
     }
 }
 
-export { lists, List, addList, loadLists }
+// Render list options
+function renderOptions(select) {
+    for (const list of lists) {
+        if (!list.special) {
+            const listOption = document.createElement("option");
+            listOption.setAttribute("value", list.title);
+            listOption.innerHTML = list.title;
+            select.appendChild(listOption);
+        }
+    }
+}
+
+export { lists, List, addList, loadLists, renderOptions }
