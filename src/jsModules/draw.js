@@ -1,4 +1,4 @@
-import { Task, addTask, tasks } from "./taskManager.js"
+import { Task, addTask } from "./taskManager.js"
 import { loadLists, addList, renderOptions, lists, List } from "./listManager.js"
 
 // Layout elements
@@ -241,11 +241,17 @@ function showTaskPopup() {
         const description = descriptionArea.value;
         const dueDate = datepicker.value;
         const priority = prioritySelect.value;
-        const chosenList = listSelect.value;     
+        let chosenList = "default";
 
+        for (const list of lists) {
+            if (list.title.toString() === listSelect.value.toString()) {
+                chosenList = list; 
+            }
+        }   
+
+        // Add the task
         if (title && description && dueDate && priority) {
             addTask(title, description, new Date(dueDate), priority, chosenList);
-            console.log(tasks);
             popup.close();
         }
         

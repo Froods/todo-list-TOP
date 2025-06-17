@@ -1,4 +1,6 @@
-const tasks = [];
+import { lists } from "./listManager"
+
+const allTasks = [];
 
 class Task {
     constructor(title, description, dueDate, priority, list) {
@@ -23,7 +25,10 @@ class Task {
 
 function addTask(title, des, dueDate, priority, list) {
     const newTask = new Task(title, des, dueDate, priority, list);
-    tasks.push(newTask);
+    allTasks.push(newTask);
+    if (list !== "default") {
+        newTask.list.tasks.push(newTask);
+    }
 }
 
-export { Task, addTask, tasks };
+export { Task, addTask, allTasks };

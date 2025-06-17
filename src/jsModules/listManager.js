@@ -1,3 +1,5 @@
+import { allTasks } from "./taskManager";
+
 class List {
     constructor(title, special) {
         this.title = title;
@@ -10,7 +12,58 @@ class List {
             this.element.classList.add("special");
         }
         this.tasks = [];
+
+        this.div = document.createElement("div");
+        this.div.classList.add(`${title}-div`, "list-div");
+
+        this.element.addEventListener("click", () => {
+            this.drawTasks();
+        });
     }
+
+    drawTasks() {
+
+        const parent = document.querySelector(".task-container");
+
+        // if..else ift. special, wrap understående kode i else 
+
+            if (parent.firstChild !== parent.lastChild) {
+                while (parent.lastChild.firstChild) {
+                    parent.lastChild.removeChild(parent.lastChild.firstChild);
+                }
+                parent.removeChild(parent.lastChild);
+            }
+
+        if (this.special) {
+            if (this.title === "Inbox") {
+                for (const task of allTasks) {
+                    this.addTaskElem(task)
+                    parent.appendChild(this.div);
+                }
+            }
+            if (this.title === "Today") {
+
+            }
+            if (this.title === "Finished") {
+                
+            }
+        } else {
+            for (const task of this.tasks) {
+                this.addTaskElem(task)
+                parent.appendChild(this.div);
+            }
+        }
+
+        
+    }
+    addTaskElem(task) {
+        const taskElem = document.createElement("div");
+        const title = document.createElement("h3");
+        title.textContent = task.title;
+        taskElem.appendChild(title);
+        this.div.appendChild(taskElem);
+    }
+
 }
 
 const listInbox = new List("Inbox", true);
