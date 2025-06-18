@@ -25,14 +25,12 @@ class List {
 
         const parent = document.querySelector(".task-container");
 
-        // if..else ift. special, wrap understående kode i else 
-
-            if (parent.firstChild !== parent.lastChild) {
-                while (parent.lastChild.firstChild) {
-                    parent.lastChild.removeChild(parent.lastChild.firstChild);
-                }
-                parent.removeChild(parent.lastChild);
+        if (parent.firstChild !== parent.lastChild) {
+            while (parent.lastChild.firstChild) {
+                parent.lastChild.removeChild(parent.lastChild.firstChild);
             }
+            parent.removeChild(parent.lastChild);
+        }
 
         if (this.special) {
             if (this.title === "Inbox") {
@@ -42,7 +40,13 @@ class List {
                 }
             }
             if (this.title === "Today") {
-
+                const today = new Date();
+                for (const task of allTasks) {
+                    if (today.getFullYear() === task.dueDate.getFullYear() && today.getMonth() === task.dueDate.getMonth() && today.getDate() === task.dueDate.getDate()) {
+                        this.addTaskElem(task)
+                        parent.appendChild(this.div);
+                    }
+                }
             }
             if (this.title === "Finished") {
                 
@@ -58,9 +62,15 @@ class List {
     }
     addTaskElem(task) {
         const taskElem = document.createElement("div");
+
+        // Checkbox
+        
+
+        // Title
         const title = document.createElement("h3");
         title.textContent = task.title;
         taskElem.appendChild(title);
+
         this.div.appendChild(taskElem);
     }
 
