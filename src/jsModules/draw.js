@@ -69,13 +69,17 @@ function showListPopup() {
     const titleLabel = document.createElement("label");
     titleLabel.setAttribute("for", "title")
     titleLabel.textContent = "Title";
-    form.appendChild(titleLabel);
 
     const titleInput = document.createElement("input");
     titleInput.setAttribute("id", "title");
     titleInput.setAttribute("name", "title");
     titleInput.setAttribute("type", "text");
-    form.appendChild(titleInput);
+
+    // Div for input
+    const inputDiv = document.createElement("div");
+    inputDiv.appendChild(titleLabel);
+    inputDiv.appendChild(titleInput);
+    form.appendChild(inputDiv);
 
     // Add button
     const addBtn = document.createElement("button");
@@ -90,7 +94,6 @@ function showListPopup() {
         }
 
     })
-    form.appendChild(addBtn);
 
     // Close button
     const closeBtn = document.createElement("button");
@@ -99,7 +102,13 @@ function showListPopup() {
         e.preventDefault();
         popup.close();
     })
-    form.appendChild(closeBtn);
+
+    // Div for button
+    const btnDiv = document.createElement("div");
+    btnDiv.classList.add("btn-div");
+    btnDiv.appendChild(addBtn);
+    btnDiv.appendChild(closeBtn);
+    form.appendChild(btnDiv);
     
     // Delete dialog from DOM when closed
     popup.addEventListener('close', () => { 
@@ -145,44 +154,55 @@ function showTaskPopup() {
     const titleLabel = document.createElement("label");
     titleLabel.setAttribute("for", "title")
     titleLabel.textContent = "Task name";
-    form.appendChild(titleLabel);
 
     const titleInput = document.createElement("input");
     titleInput.setAttribute("id", "title");
     titleInput.setAttribute("name", "title");
     titleInput.setAttribute("type", "text");
-    form.appendChild(titleInput);
+
+    // Div for title
+    const titleDiv = document.createElement("div");
+    titleDiv.appendChild(titleLabel);
+    titleDiv.appendChild(titleInput);
+    form.appendChild(titleDiv);
 
     // Description label and textarea
     const descriptionLabel = document.createElement("label");
     descriptionLabel.setAttribute("for", "description")
     descriptionLabel.textContent = "Description";
-    form.appendChild(descriptionLabel);
 
     const descriptionArea = document.createElement("textarea");
     descriptionArea.setAttribute("id", "description");
     descriptionArea.setAttribute("name", "description");
     descriptionArea.setAttribute("rows", "3");
-    descriptionArea.setAttribute("cols", "33");
-    form.appendChild(descriptionArea);
+    descriptionArea.setAttribute("cols", "19");
+
+    // Div for description
+    const descriptionDiv = document.createElement("div");
+    descriptionDiv.appendChild(descriptionLabel);
+    descriptionDiv.appendChild(descriptionArea);
+    form.appendChild(descriptionDiv);
 
     // Datepicker label and datepicker
     const datepickerLabel = document.createElement("label");
     datepickerLabel.setAttribute("for", "datepicker")
     datepickerLabel.textContent = "Due date";
-    form.appendChild(datepickerLabel);
 
     const datepicker = document.createElement("input");
     datepicker.setAttribute("id", "datepicker");
     datepicker.setAttribute("name", "datepicker");
     datepicker.setAttribute("type", "date");
-    form.appendChild(datepicker);
+
+    // Div for datepicker
+    const datepickerDiv = document.createElement("div");
+    datepickerDiv.appendChild(datepickerLabel);
+    datepickerDiv.appendChild(datepicker);
+    form.appendChild(datepickerDiv);
 
     // Priority label and input
     const priorityLabel = document.createElement("label");
     priorityLabel.setAttribute("for", "priority")
     priorityLabel.textContent = "Priority";
-    form.appendChild(priorityLabel);
 
     const prioritySelect = document.createElement("select");
     prioritySelect.setAttribute("id", "priority");
@@ -205,13 +225,16 @@ function showTaskPopup() {
         prioritySelect.appendChild(priorityImportant);
         prioritySelect.appendChild(priorityLessImportant);
 
-    form.appendChild(prioritySelect);
+    // Div for priority
+    const priorityDiv = document.createElement("div");
+    priorityDiv.appendChild(priorityLabel);
+    priorityDiv.appendChild(prioritySelect);
+    form.appendChild(priorityDiv);
 
     // List label and input
     const listLabel = document.createElement("label");
     listLabel.setAttribute("for", "list")
     listLabel.textContent = "Select list";
-    form.appendChild(listLabel);
 
     const listSelect = document.createElement("select");
     listSelect.setAttribute("id", "list");
@@ -226,9 +249,11 @@ function showTaskPopup() {
         // Render options
         renderOptions(listSelect);
 
-    
-    form.appendChild(listSelect);
-
+    // Div for list
+    const listDiv = document.createElement("div");
+    listDiv.appendChild(listLabel);
+    listDiv.appendChild(listSelect);
+    form.appendChild(listDiv);
 
     // Add button
     const addBtn = document.createElement("button");
@@ -256,7 +281,6 @@ function showTaskPopup() {
         }
         
     })
-    form.appendChild(addBtn);
 
     // Close button
     const closeBtn = document.createElement("button");
@@ -265,7 +289,13 @@ function showTaskPopup() {
         e.preventDefault();
         popup.close();
     })
-    form.appendChild(closeBtn);
+
+    // Div for button
+    const btnDiv = document.createElement("div");
+    btnDiv.classList.add("btn-div");
+    btnDiv.appendChild(addBtn);
+    btnDiv.appendChild(closeBtn);
+    form.appendChild(btnDiv);
     
     // Delete dialog from DOM when closed
     popup.addEventListener('close', () => { 

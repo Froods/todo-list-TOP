@@ -1,6 +1,23 @@
+@font-face {
+    font-family: 'robotoregular';
+    src: url('fonts/roboto-variablefont_wdthwght-webfont.woff2') format('woff2'),
+         url('fonts/roboto-variablefont_wdthwght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotobold';
+    src: url('fonts/roboto-bold-webfont.woff2') format('woff2'),
+         url('fonts/roboto-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
   box-sizing: border-box;
+  font-family: 'robotoregular', Arial, Helvetica, sans-serif;
 }
 /* 2. Remove default margin */
 * {
@@ -43,4 +60,15 @@ h1, h2, h3, h4, h5, h6 {
 */
 #root, #__next {
   isolation: isolate;
+}
+
+/* Normalize select element appearance */
+select {
+  -webkit-appearance: none; /* Safari and Chrome */
+  -moz-appearance: none;    /* Firefox */
+  appearance: none;         /* Standard */
+  background: none;         /* Optional: remove background */
+  border: 1px solid #ccc;   /* Optional: style border */
+  padding: 8px;
+  text-align: center;
 }
