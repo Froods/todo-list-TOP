@@ -26,11 +26,24 @@ class Task {
     check() {
         this.checked = true;
         console.log(`${this.title} was checked!`)
+
+        for (const list of lists) {
+            if (list.div === document.querySelector(".list-div")) {
+                list.drawTasks();
+            }
+        }
+
     }
 
     uncheck() {
         this.checked = false;
         console.log(`${this.title} was unchecked!`)
+
+        for (const list of lists) {
+            if (list.div === document.querySelector(".list-div")) {
+                list.drawTasks();
+            }
+        }
     }
 }
 

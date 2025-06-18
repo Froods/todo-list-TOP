@@ -36,26 +36,35 @@ class List {
         if (this.special) {
             if (this.title === "Inbox") {
                 for (const task of allTasks) {
-                    this.addTaskElem(task)
-                    parent.appendChild(this.div);
+                    if (!task.checked) {
+                        this.addTaskElem(task)
+                        parent.appendChild(this.div);
+                    }
                 }
             }
             if (this.title === "Today") {
                 const today = new Date();
                 for (const task of allTasks) {
-                    if (today.getFullYear() === task.dueDate.getFullYear() && today.getMonth() === task.dueDate.getMonth() && today.getDate() === task.dueDate.getDate()) {
+                    if (!task.checked && today.getFullYear() === task.dueDate.getFullYear() && today.getMonth() === task.dueDate.getMonth() && today.getDate() === task.dueDate.getDate()) {
                         this.addTaskElem(task)
                         parent.appendChild(this.div);
                     }
                 }
             }
             if (this.title === "Finished") {
-                
+                for (const task of allTasks) {
+                    if (task.checked) {
+                        this.addTaskElem(task)
+                        parent.appendChild(this.div);
+                    }
+                }
             }
         } else {
             for (const task of this.tasks) {
-                this.addTaskElem(task)
-                parent.appendChild(this.div);
+                if (!task.checked) {
+                    this.addTaskElem(task)
+                    parent.appendChild(this.div);
+                }
             }
         }
 
