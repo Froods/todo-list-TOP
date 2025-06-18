@@ -32,6 +32,7 @@ body {
     color: rgb(20, 92, 247);
     border-radius: 8px;
     padding-left: 8px;
+    transition: background-color 0.25s ease;
 }
 
 .new-list-button.special {
@@ -50,6 +51,96 @@ body {
 
 .list-button:focus {
     outline: none;
+}
+
+.selected {
+    background-color: rgb(241, 241, 241);
+}
+
+/* Task container */
+
+.task-container {
+    padding: 16px;
+}
+
+.new-task-button {
+    background-color: rgb(20, 92, 247);
+    color: white;
+    border: none;
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    padding: 0;
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.new-task-button:hover {
+    cursor: pointer;
+    transform: scale(1.04);
+}
+
+.new-task-button:active {
+    cursor: pointer;
+    transform: scale(0.96);
+    background-color: rgb(36, 86, 195);
+}
+
+/* List div */
+
+.list-div {
+    padding-top: 16px;
+    display: grid;
+}
+
+.task-element {
+    height: 64px;
+    display: grid;
+    grid-template-columns: 8px 48px 1fr 148px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: background-color 0.25s ease;
+}
+
+.task-element:hover {
+    background-color: rgb(241, 241, 241);
+}
+
+.buffer-element {
+    padding: 16px;
+    border-top: solid rgb(228, 228, 228) 1px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    align-self: center;
+    justify-self: center;
+}
+
+input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+.task-element>p {
+    align-self: center;
+    justify-self: center;
+}
+
+.text-div {
+    align-self: center;
+}
+
+.priority-1 {
+    background-color: red;
+}
+
+.priority-2 {
+    background-color: rgb(255, 245, 47);
+}
+
+.priority-3 {
+    background-color: rgb(46, 223, 140);
 }
 
 /* Dialog boxes */
@@ -93,6 +184,7 @@ label {
     border: 0;
     border-radius: 25px;
     margin: auto 8px;
+    transition: background-color 0.3s ease;
 }
 
 .btn-div button:hover {
@@ -113,6 +205,7 @@ form select {
     background-color: whitesmoke;
     padding: 4px 16px;
     border-radius: 25px;
+    transition: background-color 0.3s ease;
 }
 
 form textarea {

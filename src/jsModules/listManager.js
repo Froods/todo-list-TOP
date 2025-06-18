@@ -24,8 +24,12 @@ class List {
 
     drawTasks() {
 
-        const parent = document.querySelector(".task-container");
+        const oldSelect = document.querySelector(".selected");
+        oldSelect.classList.remove("selected");
+        this.element.classList.add("selected");
 
+        const parent = document.querySelector(".task-container");
+        
         if (parent.firstChild !== parent.lastChild) {
             while (parent.lastChild.firstChild) {
                 parent.lastChild.removeChild(parent.lastChild.firstChild);
@@ -33,12 +37,13 @@ class List {
             parent.removeChild(parent.lastChild);
         }
 
+        parent.appendChild(this.div);
+
         if (this.special) {
             if (this.title === "Inbox") {
                 for (const task of allTasks) {
                     if (!task.checked) {
                         this.addTaskElem(task)
-                        parent.appendChild(this.div);
                     }
                 }
             }
@@ -47,7 +52,6 @@ class List {
                 for (const task of allTasks) {
                     if (!task.checked && today.getFullYear() === task.dueDate.getFullYear() && today.getMonth() === task.dueDate.getMonth() && today.getDate() === task.dueDate.getDate()) {
                         this.addTaskElem(task)
-                        parent.appendChild(this.div);
                     }
                 }
             }
@@ -55,7 +59,6 @@ class List {
                 for (const task of allTasks) {
                     if (task.checked) {
                         this.addTaskElem(task)
-                        parent.appendChild(this.div);
                     }
                 }
             }
@@ -63,7 +66,6 @@ class List {
             for (const task of this.tasks) {
                 if (!task.checked) {
                     this.addTaskElem(task)
-                    parent.appendChild(this.div);
                 }
             }
         }
@@ -71,29 +73,44 @@ class List {
         
     }
     addTaskElem(task) {
+        const bufferElem = document.createElement("div");
+        bufferElem.classList.add("buffer-element")
         const taskElem = document.createElement("div");
-        taskElem.classList.add("taks-element")
+        taskElem.classList.add("task-element")
+        
+        // Priority color
+        const priorityDiv = document.createElement("div");
+        priorityDiv.classList.add(`priority-${task.priority}`);
+        taskElem.appendChild(priorityDiv);
 
         // Checkbox
         const checkbox = task.checkboxElem;
         taskElem.appendChild(checkbox);
 
-        // Title
-        const title = document.createElement("h3");
-        title.textContent = task.title;
-        taskElem.appendChild(title);
+        // Title + description
 
-        // Description
-        const description = document.createElement("p");
-        description.textContent = task.description;
-        taskElem.appendChild(description)
+            // Div
+            const textDiv = document.createElement("div");
+            textDiv.classList.add("text-div");
+            taskElem.appendChild(textDiv);
+
+            // Title
+            const title = document.createElement("h3");
+            title.textContent = task.title;
+            textDiv.appendChild(title);
+
+            // Description
+            const description = document.createElement("p");
+            description.textContent = task.description;
+            textDiv.appendChild(description)
 
         // Duedate
         const dueDate = document.createElement("p");
         dueDate.textContent = format(task.dueDate, "dd-MMM-yyyy");
         taskElem.appendChild(dueDate);
 
-        this.div.appendChild(taskElem);
+        bufferElem.appendChild(taskElem);
+        this.div.appendChild(bufferElem);
     }
 
 }
@@ -101,6 +118,8 @@ class List {
 const listInbox = new List("Inbox", true);
 const listToday = new List("Today", true);
 const listFinished = new List("Finished", true);
+
+listInbox.element.classList.add("selected");
 
 const lists = [listInbox, listToday, listFinished];
 
