@@ -56,6 +56,12 @@ function addTask(title, des, dueDate, priority, list) {
     if (list !== "default") {
         newTask.list.tasks.push(newTask);
     }
+
+    if (list === "default") {
+        lists[0].drawTasks();
+    } else {
+        list.drawTasks();
+    }
 }
 
 function sortTasksByDate(taskArr) {

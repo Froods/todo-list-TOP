@@ -12,3 +12,9 @@ body {
 .list-button {
     text-align: left;
 }
+
+dialog {
+    margin: auto;
+    border: 0;
+    border-radius: 24px;
+}

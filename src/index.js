@@ -1,4 +1,5 @@
 import "./styles.css";
+import "./normalize.css";
 import { Task } from "./jsModules/taskManager.js"
 import { populateBody } from "./jsModules/draw.js"
 import { List, addList } from "./jsModules/listManager.js"
