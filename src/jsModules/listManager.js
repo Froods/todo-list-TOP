@@ -1,4 +1,5 @@
 import { allTasks } from "./taskManager";
+const { format } = require("date-fns");
 
 class List {
     constructor(title, special) {
@@ -62,14 +63,26 @@ class List {
     }
     addTaskElem(task) {
         const taskElem = document.createElement("div");
+        taskElem.classList.add("taks-element")
 
         // Checkbox
-        
+        const checkbox = task.checkboxElem;
+        taskElem.appendChild(checkbox);
 
         // Title
         const title = document.createElement("h3");
         title.textContent = task.title;
         taskElem.appendChild(title);
+
+        // Description
+        const description = document.createElement("p");
+        description.textContent = task.description;
+        taskElem.appendChild(description)
+
+        // Duedate
+        const dueDate = document.createElement("p");
+        dueDate.textContent = format(task.dueDate, "dd-MMM-yyyy");
+        taskElem.appendChild(dueDate);
 
         this.div.appendChild(taskElem);
     }

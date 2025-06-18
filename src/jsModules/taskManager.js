@@ -11,6 +11,16 @@ class Task {
         this.priority = priority;
         this.checked = false;
         this.list = list;
+        this.checkboxElem = document.createElement("input");
+        this.checkboxElem.setAttribute("type", "checkbox");
+
+        this.checkboxElem.addEventListener("change", () => {
+            if (this.checkboxElem.checked) {
+                this.check();
+            } else {
+                this.uncheck();
+            }
+        });
     }
 
     check() {
@@ -29,7 +39,6 @@ function addTask(title, des, dueDate, priority, list) {
 
     allTasks.push(newTask);
     sortTasksByDate(allTasks);
-    console.log(allTasks);
 
     if (list !== "default") {
         newTask.list.tasks.push(newTask);
@@ -45,7 +54,6 @@ function sortTasksByDate(taskArr) {
     }
 
     taskDates.sort(compareAsc);
-    console.log(taskDates);
 
     for (const date of taskDates) {
         for (const task of taskArr) {
