@@ -59,8 +59,10 @@ function addTask(title, des, dueDate, priority, list) {
 
     if (list === "default") {
         lists[0].drawTasks();
+        localStorage.setItem(`taskify-stored-tasks-${title}`, `${title},${des},${dueDate},${priority},default`);
     } else {
         list.drawTasks();
+        localStorage.setItem(`taskify-stored-tasks-${title}`, `${title},${des},${dueDate},${priority},${list.title}`);
     }
 }
 

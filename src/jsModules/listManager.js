@@ -15,7 +15,7 @@ class List {
         this.tasks = [];
 
         this.div = document.createElement("div");
-        this.div.classList.add(`${title}-div`, "list-div");
+        this.div.classList.add(`${this.class}-div`, "list-div");
 
         this.element.addEventListener("click", () => {
             this.drawTasks();
@@ -130,6 +130,8 @@ function addList(list, nav) {
 
     clearLists(nav);
     loadLists(lists, nav);
+
+    localStorage.setItem(`taskify-stored-lists-${list}`, `${list}`);
 }
 
 // Load lists
